@@ -11,7 +11,7 @@ public class ServerThread implements Runnable
 	BufferedReader in = null;
 	OutputStream out = null;
 	DataTransmission data;
-	String content;
+	Object content;
 
 	public ServerThread(Socket socket) throws IOException
 	{
@@ -23,7 +23,7 @@ public class ServerThread implements Runnable
 	public void run()
 	{
 		System.out.println("read");
-		while ((content = (String) getObj()) != null)
+		while ((content = getObj()) != null)
 		{
 			System.out.println(content);
 			for (Socket s : Main.socketList)
